@@ -1,0 +1,15 @@
+<div>
+    <form>
+        {{#if this.Application.logedUser}}
+            <h4>Bienvenido {{this.Application.logedUser.username}}</h4>
+            <button type="button" {{on "click" this.onClickLogout}}>Cerrar Sesión</button> 
+        {{else}}
+            <h2 class="login">Inicio de Sesión</h2>
+            <input type="text" placeholder="Nombre de usuario" {{on "change" this.onInputUsername}} value={{this.username}} />
+            <input type="password" placeholder="Contraseña" {{on "change" this.onInputPassword}} value={{this.password}} />
+            <button type="button" {{on "click" this.onClickLogin}}>Iniciar Sesión</button>
+        {{/if}}
+    
+    </form> 
+</div>
+{{outlet}}

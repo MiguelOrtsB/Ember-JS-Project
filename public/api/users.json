@@ -1,0 +1,8 @@
+[
+    { "username": "miguel", "password": "1234", "country": "Spain", "mail": "miguel@gmail.com"},
+    { "username": "pepe", "password": "1234", "country": "Portugal", "mail": "pepe@gmail.com" },
+    { "username": "antonio", "password": "1234", "country": "Mexico", "mail": "antonio@gmail.com" },
+    { "username": "paula", "password": "1234", "country": "Argentina", "mail": "paula@gmail.com" },
+    { "username": "maria", "password": "1234", "country": "Venezuela", "mail": "maria@gmail.com" },
+    { "username": "axel", "password": "1234", "country": "US", "mail": "axel@gmail.com" }
+]  

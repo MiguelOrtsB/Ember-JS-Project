@@ -1,0 +1,6 @@
+<h2 class="list-title">List of Users</h2>
+<ul>
+    {{#each this.users as |user|}}
+        <li><b>Name:</b> {{user.username}} | <b>Password:</b> {{user.password}} | <b>Country:</b> {{user.country}} | <b>Mail:</b> {{user.mail}}</li>
+    {{/each}}
+</ul>

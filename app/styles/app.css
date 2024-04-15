@@ -1,0 +1,34 @@
+html {
+    margin: 0;
+}
+
+body {
+    margin: 0;
+}
+
+.menu {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #333; /* Color de fondo de la barra de navegación */
+    padding: 10px 20px; /* Añadir relleno interno para separar los elementos de la barra de navegación */
+}
+
+.menu a {
+    color: white; /* Color del texto */
+    text-decoration: none; /* Sin subrayado */
+    margin-left: 20px;
+}
+
+.login {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.list-title {
+    margin: 5px !important;
+}
+
+.logo-back {
+    margin-top: 10px;
+}

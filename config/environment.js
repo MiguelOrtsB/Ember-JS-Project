@@ -3,6 +3,7 @@
 module.exports = function (environment) {
   const ENV = {
     modulePrefix: 'proyecto2',
+    podModulePrefix: 'proyecto2/pods',
     environment,
     rootURL: '/',
     locationType: 'history',
