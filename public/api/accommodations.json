@@ -1,0 +1,104 @@
+{
+  "accommodations": [
+    {
+      "type": "hotel",
+      "id": "hotel-isla-mallorca",
+      "name": "Hotel Isla Mallorca & Spa",
+      "country": "Spain",
+      "city": "Palma de Mallorca",
+      "price": 150,
+      "stars": 4,
+      "image": "https://cdn2.paraty.es/test3-copia2/images/e395d951e46174f"
+    },
+    {
+      "type": "hotel",
+      "id": "grupotel-parc-natural",
+      "name": "Grupotel Parc Natural & Spa",
+      "country": "Spain",
+      "city": "Palma de Mallorca",
+      "price": 295,
+      "stars": 5,
+      "image": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFEA1YELFPlF5h5KGJxBySiTSTd4F6zSQia0pBeNwH4wUMM7l578zuQGe2UoEuoyw_v1HTwdtwOX2p7lzqVE9wDeLZQppf518ksNW9Gt10bzl7c7UD_2AAUqFfolNnOXWczgETCAGwbUEdFL2dgvHOT011vr8koFL6XXW109ypMfDAzTCGHa4Wk=w287-h192-n-k-rw-no-v1"
+    },
+    {
+      "type": "hotel",
+      "id": "hotel-torre-azul",
+      "name": "Hotel Torre Azul & Spa",
+      "country": "Spain",
+      "city": "Palma de Mallorca",
+      "price": 78,
+      "stars": 4,
+      "image": "https://www.hoteltorreazul.com/en/dms/monoHotel-TorreAzul/galeria/hotel/galeria-hotel7-hotel-torre-azul.jpg"
+    },
+    {
+      "type": "hotel",
+      "id": "sands-beach-resort",
+      "name": "Sands Beach Resort",
+      "country": "Spain",
+      "city": "Lanzarote",
+      "price": 90,
+      "stars": 4,
+      "image": "https://lh3.googleusercontent.com/0lZu25IO87p8uyFeldMv8l_nqXm10MA_p_KfAUZ5rhllI8g9u-N6PgkNomjohMgKxHEeuY-mYPe2iRHi6-XE_iHXdSlRcw=s1800"
+    },
+    {
+      "type": "hotel",
+      "id": "hotel-costa-calero-talaso",
+      "name": "Hotel Costa Calero Talaso & Spa",
+      "country": "Spain",
+      "city": "Lanzarote",
+      "price": 128,
+      "stars": 4,
+      "image": "https://www.hotelcostacalero.com/_images/sites/costa-calero-thalasso-spa1599/img/20200225_130839.webp?w=945&h=750&c=1"
+    },
+    {
+      "type": "hotel",
+      "id": "hilton-miami-downtown",
+      "name": "Hilton Miami Downtown",
+      "country": "US",
+      "city": "Miami",
+      "price": 231,
+      "stars": 4,
+      "image": "https://www.hilton.com/im/en/MIADTHF/17406866/hotel-1.jpg?impolicy=crop&cw=5000&ch=2799&gravity=NorthWest&xposition=0&yposition=497&rw=768&rh=430"
+    },
+    {
+      "type": "hostel",
+      "id": "hostel-selina-cancun",
+      "name": "Hostel Selina Cancún",
+      "country": "Mexico",
+      "city": "Cancún",
+      "price": 31,
+      "stars": 3,
+      "image": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFz7SqjoOdSVLXsxbyVcnAQTg7g7atcxOH2FUd4xpLrfQr-XKrYqs8SdTMqLwYL4N_nrsQ7D8eRiLxQhx082iSmwGIRxmqt2jziPgIKk5X2lG98DgfPoCpgW98pUAoEloAy8eixU8oJE8TVdtdaZkqrgXDKXufRejktFX4pDY9Ii9B8LmdjVvKYWg=w287-h192-n-k-rw-no-v1"
+    },
+    {
+      "type": "hotel",
+      "id": "mex-hoteles-cancun-centro",
+      "name": "Mex Hoteles Cancún Centro",
+      "country": "Mexico",
+      "city": "Cancún",
+      "price": 49,
+      "stars": 4,
+      "image": "https://mexhoteles.com/images/roof-sec3-3.png"
+    },
+    {
+      "type": "hotel",
+      "id": "notting-hill-gate-hotel",
+      "name": "Notting Hill Gate Hotel",
+      "country": "UK",
+      "city": "London",
+      "price": 71,
+      "stars": 3,
+      "image": "https://webbox.imgix.net/images/iiwukynpvyiccals/fdfb64a9-ef58-47c7-932b-04aa20268174.avif?auto=format,compress&fit=crop&crop=entropy&w=1920"
+    },
+    {
+      "type": "hostel",
+      "id": "generator-paris",
+      "name": "Generator Paris",
+      "country": "France",
+      "city": "Paris",
+      "price": 67,
+      "stars": 3,
+      "image": "https://staygenerator.com/web/media/gallery-images/paris/new%20photo%20gallery%202022/generator-paris-entrance.jpg?width=1024&mode=max&quality=100"
+    }
+  ]
+}

@@ -11,7 +11,7 @@ export default class ApplicationService extends Service {
   // Variable para comprobar si el usuario se ha logueado
   @tracked logedUser = null;
 
-  // Al acceder a la ruta se carga la lista de usuarios
+  // Al acceder a la ruta se carga la lista de usuarios (por lo que no hace falta que esté trackeada ya que será lo primero que se inicie)
   init() {
     super.init(...arguments);
     console.log('initService');

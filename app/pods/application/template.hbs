@@ -1,7 +1,7 @@
 <div>
-    <form>
+    <form class="login-form">
         {{#if this.Application.logedUser}}
-            <h4>Bienvenido {{this.Application.logedUser.username}}</h4>
+            <h4>Bienvenido/a {{this.Application.logedUser.username}}</h4>
             <button type="button" {{on "click" this.onClickLogout}}>Cerrar Sesión</button> 
         {{else}}
             <h2 class="login">Inicio de Sesión</h2>

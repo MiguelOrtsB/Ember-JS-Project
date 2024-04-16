@@ -1,0 +1,11 @@
+{
+    "bookings": [
+        {
+            "id": "booking1",
+            "hotelId": "hotel-isla-mallorca",
+            "startDate": "2024-05-01",
+            "endDate": "2024-05-10",
+            "description": "fgeghdfbggfbgfhtgfhgfb"
+        }
+    ]
+}

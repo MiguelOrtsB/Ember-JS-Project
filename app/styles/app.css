@@ -32,3 +32,234 @@ body {
 .logo-back {
     margin-top: 10px;
 }
+
+.booking-form {
+    text-align: center;
+}
+
+.booking-form-div {
+    margin: 10px;
+}
+
+.users-table{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border: black 1px solid;
+    width: 100%;
+    text-align: center;
+}
+
+thead {
+    background-color: lightgrey;
+}
+
+th, td {
+    width: 25%;
+    border: black 1px solid;
+}
+
+.list-title {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+}
+
+.home-img{
+    width: 100%;
+    height: 50%;
+}
+
+.login-form {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h4 {
+    margin: 10px;
+}
+
+/* A partir de aquí los estilos son preestablecidos, sacados del tutorial de Ember */
+
+.rentals input {
+    padding: 11px;
+    font-size: 18px;
+    width: 500px;
+    margin: 20px auto 50px;
+    background-color: rgb(255 255 255 / 75%);
+    border: solid 1px lightgray;
+    display: block;
+}
+
+.rental {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 15px;
+    background-color: #f6f6f6;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.rental:hover {
+    background-color: #f3f3f3;
+}
+
+.rental img {
+    border-radius: 5px;
+}
+
+.rental .image {
+    flex-grow: 0;
+    flex-basis: 150px;
+    margin: 20px 25px;
+    text-align: center;
+}
+
+.rental button.image {
+    position: relative;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    z-index: 1;
+}
+
+.rental button.image:focus {
+    outline: none;
+}
+
+.rental button.image::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    margin: -20px;
+    padding: 20px;
+    border-radius: 5px;
+    background: #016aba;
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+}
+
+.rental button.image:focus::after,
+.rental button.image:hover::after {
+    opacity: 0.1;
+}
+
+.rental .image img {
+    max-width: 100%;
+}
+
+.rental .image.large {
+    margin: 30px 25px 50px;
+    flex-basis: 100%;
+}
+
+.rental .image small {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: -15px;
+    text-align: center;
+    color: #016aba;
+
+    /* This is needed to fix a safari clipping issue */
+    position: relative;
+}
+
+.rental .image.large small {
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 110%;
+}
+
+.rental .details {
+    flex-basis: 50%;
+    flex-grow: 2;
+    display: flex;
+    height: 150px;
+    margin: 20px 25px;
+    place-content: space-around space-between;
+    flex-wrap: wrap;
+}
+
+.rental h3 {
+    flex-basis: 100%;
+}
+
+.rental h3 a {
+    display: inline;
+}
+
+.rental .detail {
+    flex-basis: 50%;
+    font-weight: 300;
+    font-style: italic;
+    white-space: nowrap;
+}
+
+.rental .detail span {
+    font-weight: 400;
+    font-style: normal;
+}
+
+.rental.detailed {
+    background: none;
+    align-items: flex-start;
+}
+
+.rental.detailed .image {
+    flex-basis: 320px;
+}
+
+.rental.detailed .image.large {
+    margin: 30px 25px 50px;
+    flex-basis: 100%;
+}
+
+.rental.detailed .details {
+    height: auto;
+}
+
+.rental.detailed h3 {
+    font-size: 200%;
+    margin-bottom: 10px;
+}
+
+.rental.detailed .detail {
+    margin: 5px 0;
+    flex-basis: 100%;
+    flex-shrink: 2;
+}
+
+.rental.detailed .description {
+    white-space: normal;
+    flex-basis: 100%;
+    flex-shrink: 1;
+}
+
+@media only screen and (max-width: 919px) {
+    .rental.detailed .image,
+    .rental.detailed .image.large {
+        margin: 30px 25px 25px;
+        flex-basis: 100%;
+        cursor: default;
+    }
+
+    .rental.detailed .image:hover {
+        flex-basis: 100%;
+        cursor: default;
+    }
+
+    .rental.detailed .image small {
+        display: none;
+    }
+
+    .rental.detailed button.image:hover::after {
+        opacity: 0;
+    }
+
+    .rental.detailed button.image:focus::after {
+        opacity: 0.1;
+    }
+}

@@ -1,8 +1,8 @@
 [
-    { "username": "miguel", "password": "1234", "country": "Spain", "mail": "miguel@gmail.com"},
-    { "username": "pepe", "password": "1234", "country": "Portugal", "mail": "pepe@gmail.com" },
-    { "username": "antonio", "password": "1234", "country": "Mexico", "mail": "antonio@gmail.com" },
-    { "username": "paula", "password": "1234", "country": "Argentina", "mail": "paula@gmail.com" },
-    { "username": "maria", "password": "1234", "country": "Venezuela", "mail": "maria@gmail.com" },
-    { "username": "axel", "password": "1234", "country": "US", "mail": "axel@gmail.com" }
+    { "username": "Miguel", "password": "1234", "country": "Spain", "mail": "miguel@gmail.com", "phone": "+34 689098711" },
+    { "username": "Pepe", "password": "1234", "country": "Portugal", "mail": "pepe@gmail.com", "phone": "+69 619076555" },
+    { "username": "Antonio", "password": "1234", "country": "Mexico", "mail": "antonio@gmail.com", "phone": "+45 687633212" },
+    { "username": "Paula", "password": "1234", "country": "Argentina", "mail": "paula@gmail.com", "phone": "+25 689098751" },
+    { "username": "Maria", "password": "1234", "country": "Venezuela", "mail": "maria@gmail.com", "phone": "+88 600700990" },
+    { "username": "Axel", "password": "1234", "country": "US", "mail": "axel@gmail.com", "phone": "+112 781065432" }
 ]  
