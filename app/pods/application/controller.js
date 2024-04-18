@@ -49,7 +49,6 @@ export default class ApplicationController extends Controller {
       }
     }
     if (logged) {
-      window.alert('¡Inicio de sesión exitoso!');
       this.router.transitionTo('home');
     } else {
       window.alert('Nombre de usuario o contraseña incorrectos.');

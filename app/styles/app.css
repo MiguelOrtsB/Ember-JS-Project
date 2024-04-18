@@ -11,22 +11,18 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background-color: #333; /* Color de fondo de la barra de navegación */
-    padding: 10px 20px; /* Añadir relleno interno para separar los elementos de la barra de navegación */
+    background-color: #333; 
+    padding: 10px 20px; 
 }
 
 .menu a {
-    color: white; /* Color del texto */
-    text-decoration: none; /* Sin subrayado */
+    color: white; 
+    text-decoration: none; 
     margin-left: 20px;
 }
 
 .login {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-.list-title {
-    margin: 5px !important;
 }
 
 .logo-back {
@@ -41,7 +37,7 @@ body {
     margin: 10px;
 }
 
-.users-table{
+.users-table, .bookings-table{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border: black 1px solid;
     width: 100%;
@@ -54,6 +50,11 @@ thead {
 
 th, td {
     width: 25%;
+    border: black 1px solid;
+}
+
+.bookingsTd, .bookingsTh {
+    width: 16% !important;
     border: black 1px solid;
 }
 
@@ -78,6 +79,34 @@ h4 {
 
 li {
     list-style: none;
+}
+
+.booking-button {
+    background-color: #016aba;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.booking-button-create {
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.booking-div {
+    text-align: center;
+}
+
+.readonly {
+    background-color: lightcyan;
 }
 
 /* A partir de aquí los estilos son preestablecidos, sacados del tutorial de Ember */
@@ -111,12 +140,12 @@ li {
     border-radius: 5px;
 }
 
-/* .rental .image {
+.rental .image {
     flex-grow: 0;
     flex-basis: 150px;
     margin: 20px 25px;
     text-align: center;
-} */
+}
 
 .rental button.image {
     position: relative;

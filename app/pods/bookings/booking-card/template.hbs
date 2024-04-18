@@ -1,0 +1,22 @@
+<form class="booking-form">
+        <h2>Formulario</h2>
+        <div class="booking-form-div">
+            <input type="text" class="readonly" placeholder="Booking ID" value={{this.Bookings.selectedBooking.id}} readonly>
+        </div>
+        <div class="booking-form-div">
+            <input type="text" class="readonly" placeholder="Hotel ID" value={{this.Bookings.selectedBooking.hotelId}} readonly>
+        </div>
+        <div class="booking-form-div">
+            <input type="date" placeholder="Start date" {{on "change" this.onInputStartDate}} value={{this.Bookings.selectedBooking.startDate}}>
+        </div>
+        <div class="booking-form-div">
+            <input type="date" placeholder="End date" {{on "change" this.onInputEndDate}} value={{this.Bookings.selectedBooking.endDate}}>
+        </div>
+        <div class="booking-form-div">
+            <input type="textarea" placeholder="Description" {{on "change" this.onInputDescription}} value={{this.Bookings.selectedBooking.description}}>
+        </div>
+        <div class="booking-form-div">
+            <input type="number" placeholder="Pax" {{on "change" this.onInputPax}} value={{this.Bookings.selectedBooking.pax}}>
+        </div>
+        <button type="button" {{on "click" this.saveBooking}}>Confirm</button>  
+</form>

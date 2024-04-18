@@ -2,7 +2,7 @@
 <div class="rentals">
     <ul class="results">
         {{#each this.Form.hotelList.accommodations as |hotel|}}
-            <li><HotelList @hotel = {{hotel}} /></li> <!-- Pasamos cada registro de la lista (hotel) como parámetro del componente -->
+            <li><HotelList @hotel = {{hotel}} /></li> {{!-- Pasamos cada registro de la lista (hotel) como parámetro del componente --}}
         {{/each}}
     </ul>
 </div>
