@@ -1,13 +1,14 @@
 <MenuBar />
 <div class="booking-div">
-    <button class="booking-button-create">Create new booking</button>
+    <button class="booking-button-create" type="button" {{on "click" this.onClickCreate}}>Create Booking</button>
+    <button class="booking-button-delete" type="button" {{on "click" this.onClickDelete}}>Delete Booking</button>
 </div>
 {{outlet}}
 <h2 class="list-title">Lista de Bookings</h2>
 <table class="bookings-table">
     <thead>
         <tr>
-            <th class="bookingsTh">ID</th>
+            <th class="bookingsTh">Booking ID</th>
             <th class="bookingsTh">Hotel ID</th>
             <th class="bookingsTh">Start Date</th>
             <th class="bookingsTh">End Date</th>
@@ -17,7 +18,7 @@
         </tr>
     </thead>
     <tbody>
-        {{#each this.Bookings.bookingList as |booking|}} <!-- Llamamos al servicio que contiene la lista de bookings (objetos) y los recorremos (los mostrará todos) -->
+        {{#each this.Bookings.bookingList as |booking|}} {{!-- Llamamos al servicio que contiene la lista de bookings (objetos) y los recorremos (los mostrará todos) --}}
             <tr>
                 <td class="bookingsTd">{{booking.id}}</td>
                 <td class="bookingsTd">{{booking.hotelId}}</td>
@@ -26,8 +27,8 @@
                 <td class="bookingsTd">{{booking.description}}</td>
                 <td class="bookingsTd">{{booking.pax}}</td>
                 <td class="bookingsTd">
-                    <button class="booking-button" {{on "click" (fn this.goToBookingCard booking)}}>Edit</button> <!-- Al hacer click activamos función que redirige a la página de 
-                    booking-card y le pasa como parámetro el booking que queremos editar-->
+                    <button class="booking-button" type="button" {{on "click" (fn this.goToBookingCard booking)}}>Edit</button> {{!-- Al hacer click activamos función que redirige a la página de 
+                    booking-card y le pasa como parámetro el booking que queremos editar--}}
                 </td>
             </tr>
         {{/each}}

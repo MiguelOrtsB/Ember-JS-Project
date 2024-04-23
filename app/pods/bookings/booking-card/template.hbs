@@ -1,22 +1,44 @@
-<form class="booking-form">
-        <h2>Formulario</h2>
-        <div class="booking-form-div">
-            <input type="text" class="readonly" placeholder="Booking ID" value={{this.Bookings.selectedBooking.id}} readonly>
-        </div>
-        <div class="booking-form-div">
-            <input type="text" class="readonly" placeholder="Hotel ID" value={{this.Bookings.selectedBooking.hotelId}} readonly>
-        </div>
-        <div class="booking-form-div">
-            <input type="date" placeholder="Start date" {{on "change" this.onInputStartDate}} value={{this.Bookings.selectedBooking.startDate}}>
-        </div>
-        <div class="booking-form-div">
-            <input type="date" placeholder="End date" {{on "change" this.onInputEndDate}} value={{this.Bookings.selectedBooking.endDate}}>
-        </div>
-        <div class="booking-form-div">
-            <input type="textarea" placeholder="Description" {{on "change" this.onInputDescription}} value={{this.Bookings.selectedBooking.description}}>
-        </div>
-        <div class="booking-form-div">
-            <input type="number" placeholder="Pax" {{on "change" this.onInputPax}} value={{this.Bookings.selectedBooking.pax}}>
-        </div>
-        <button type="button" {{on "click" this.saveBooking}}>Confirm</button>  
-</form>
+{{#if this.Bookings.smallForm}} <!-- Si le hemos dado al botón de Delete se abrirá el formulario pequeño, sinó el grande-->
+    <form class="booking-form">
+        <h3 class="h3-form">Formulario</h3>
+        <label for="booking-delete" class="booking-delete-label">Selecciona el ID del Booking que quieres eliminar: </label>
+        <select name="booking-delete" id="booking/delete" class="booking-delete" {{on "change" this.onInputBookingId}} value={{this.Bookings.selectedBooking.id}}> <!-- FALTA IMPLEMENTAR -->
+                            <option value="">--Chose ID--</option>
+                            {{#each this.Bookings.bookingList as |booking|}}
+                                <option>{{booking.id}}</option>
+                            {{/each}}
+                    </select>
+    </form>
+{{else}}
+    <form class="booking-form">
+            <h3 class="h3-form">Formulario</h3>
+            <div class="booking-form-div">
+                <input type="text" class="readonly" placeholder="Booking ID" value={{this.Bookings.selectedBooking.id}} readonly>
+            </div>
+            <div class="booking-form-div">
+                {{#if this.Bookings.selectedBooking.id}} {{!-- Si encuentra un ID de hotel (true) se mostrará el input en modo readonly solamente --}}
+                    <input type="text" class="readonly" placeholder="Hotel ID" value={{this.Bookings.selectedBooking.hotelId}} readonly>
+                {{else}}
+                    <select name="pets" id="hotelId-select" {{on "change" this.onInputHotelId}} value={{this.Bookings.selectedBooking.hotelId}}>
+                            <option value="">--Chose Hotel ID--</option>
+                            {{#each this.Form.hotelList.accommodations as |hotel|}}
+                                <option>{{hotel.id}}</option>
+                            {{/each}}
+                    </select>
+                {{/if}}
+            </div>
+            <div class="booking-form-div">
+                <input type="date" placeholder="Start date" {{on "change" this.onInputStartDate}} value={{this.Bookings.selectedBooking.startDate}}>
+            </div>
+            <div class="booking-form-div">
+                <input type="date" placeholder="End date" {{on "change" this.onInputEndDate}} value={{this.Bookings.selectedBooking.endDate}}>
+            </div>
+            <div class="booking-form-div">
+                <input type="textarea" placeholder="Description" {{on "change" this.onInputDescription}} value={{this.Bookings.selectedBooking.description}}>
+            </div>
+            <div class="booking-form-div">
+                <input type="number" placeholder="Pax" {{on "change" this.onInputPax}} value={{this.Bookings.selectedBooking.pax}}>
+            </div>
+            <button type="button" {{on "click" this.saveBooking}}>Confirm</button>  
+    </form>
+{{/if}}

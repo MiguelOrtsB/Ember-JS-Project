@@ -12,7 +12,8 @@ export default class FormRoute extends Route {
 
   // Función que es la primera que se ejecuta cuando se carga la ruta 'form' y comprubea si el usuario se ha registrado para evitar que acceda a ella
   beforeModel(transition) {
-    if (this.Application.logedUser == null) {
+    // if (this.Application.logedUser == null) {
+    if (!sessionStorage.getItem('usuario')) {
       this.router.transitionTo('/');
     } else {
       this.Form.loadHotelList(); // Si se ha registrado el usuario, cargamos la lista de hoteles

@@ -46,6 +46,7 @@ export default class ApplicationController extends Controller {
       if (user.username == this.username && user.password == this.password) {
         logged = true;
         this.Application.logedUser = user;
+        sessionStorage.setItem("usuario", JSON.stringify(this.Application.logedUser.username)); // Guardamos la sesión con el usuario actual
       }
     }
     if (logged) {
@@ -61,6 +62,13 @@ export default class ApplicationController extends Controller {
   @action
   onClickLogout() {
     this.Application.logedUser = null;
+    sessionStorage.removeItem("usuario"); // Eliminamos la sesión del usuario actual
     this.router.transitionTo('/');
+  }
+  
+
+  get isLoggedIn() {
+    // Verifica si hay un usuario en la sesión
+    return sessionStorage.getItem("usuario");
   }
 }

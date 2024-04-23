@@ -25,6 +25,10 @@ body {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+.booking-delete-label {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 .logo-back {
     margin-top: 10px;
 }
@@ -101,12 +105,26 @@ li {
     margin-top: 10px;
 }
 
+.booking-button-delete {
+    background-color: rgb(217, 59, 59);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
 .booking-div {
     text-align: center;
 }
 
 .readonly {
     background-color: lightcyan;
+}
+
+.h3-form {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* A partir de aquí los estilos son preestablecidos, sacados del tutorial de Ember */

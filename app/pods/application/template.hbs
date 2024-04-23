@@ -1,15 +1,14 @@
 <div>
     <form class="login-form">
         {{#if this.Application.logedUser}}
-            <h4>Bienvenido/a {{this.Application.logedUser.username}}</h4>
+            <h4>Bienvenido/a {{this.Application.storageUserName}}</h4>
             <button type="button" {{on "click" this.onClickLogout}}>Cerrar Sesión</button> 
         {{else}}
             <h2 class="login">Inicio de Sesión</h2>
             <input type="text" placeholder="Nombre de usuario" {{on "change" this.onInputUsername}} value={{this.username}} />
             <input type="password" placeholder="Contraseña" {{on "change" this.onInputPassword}} value={{this.password}} />
-            <button type="button" {{on "click" this.onClickLogin}}>Iniciar Sesión</button>
+            <button type="button" {{on "click" this.onClickLogin}}>Iniciar Sesión</button> {{!-- Si error, cambiar a type button --}}
         {{/if}}
-    
     </form> 
 </div>
 {{outlet}}

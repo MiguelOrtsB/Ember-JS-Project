@@ -11,6 +11,9 @@ export default class ApplicationService extends Service {
   // Variable para comprobar si el usuario se ha logueado
   @tracked logedUser = null;
 
+  // Variable que asignará en la ruta Home en nuevo usuario de la sesión para que muestre el mensaje de 'Bienvenido' correctamente
+  @tracked storageUserName = null;
+
   // Al acceder a la ruta se carga la lista de usuarios (por lo que no hace falta que esté trackeada ya que será lo primero que se inicie)
   init() {
     super.init(...arguments);
