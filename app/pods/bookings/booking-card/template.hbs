@@ -1,13 +1,15 @@
-{{#if this.Bookings.smallForm}} <!-- Si le hemos dado al botón de Delete se abrirá el formulario pequeño, sinó el grande-->
+{{#if this.Bookings.smallForm}} {{!-- Si le hemos dado al botón de Delete se abrirá el formulario pequeño, sinó el grande--}}
     <form class="booking-form">
         <h3 class="h3-form">Formulario</h3>
         <label for="booking-delete" class="booking-delete-label">Selecciona el ID del Booking que quieres eliminar: </label>
-        <select name="booking-delete" id="booking/delete" class="booking-delete" {{on "change" this.onInputBookingId}} value={{this.Bookings.selectedBooking.id}}> <!-- FALTA IMPLEMENTAR -->
-                            <option value="">--Chose ID--</option>
-                            {{#each this.Bookings.bookingList as |booking|}}
-                                <option>{{booking.id}}</option>
-                            {{/each}}
-                    </select>
+        <select name="booking-delete" id="booking-delete" class="booking-delete" {{on "change" this.onInputBookingId}} value={{this.Bookings.selectedBooking.id}}> {{!-- FALTA IMPLEMENTAR --}}
+                <option value="">--Chose ID--</option>
+                {{#each this.Bookings.bookingList as |booking|}}
+                    <option>{{booking.id}}</option>
+                {{/each}}
+        </select>
+        <button type="button" {{on "click" this.deleteBooking}}>Confirm</button>
+        <button type="button" {{on "click" this.cancel}}>Cancel</button>
     </form>
 {{else}}
     <form class="booking-form">
@@ -39,6 +41,7 @@
             <div class="booking-form-div">
                 <input type="number" placeholder="Pax" {{on "change" this.onInputPax}} value={{this.Bookings.selectedBooking.pax}}>
             </div>
-            <button type="button" {{on "click" this.saveBooking}}>Confirm</button>  
+            <button type="button" {{on "click" this.saveBooking}}>Confirm</button> 
+            <button type="button" {{on "click" this.cancel}}>Cancel</button> 
     </form>
 {{/if}}

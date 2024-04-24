@@ -2,6 +2,8 @@ import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import swal from 'sweetalert';
+
 
 export default class ApplicationController extends Controller {
   // Inyectamos los servicios para acceder a las propiedades de router de Ember y para poder acceder al contenido del servicio de Application
@@ -46,13 +48,16 @@ export default class ApplicationController extends Controller {
       if (user.username == this.username && user.password == this.password) {
         logged = true;
         this.Application.logedUser = user;
-        sessionStorage.setItem("usuario", JSON.stringify(this.Application.logedUser.username)); // Guardamos la sesión con el usuario actual
+        sessionStorage.setItem(
+          'usuario',
+          JSON.stringify(this.Application.logedUser.username)
+        ); // Guardamos la sesión con el usuario actual
       }
     }
     if (logged) {
       this.router.transitionTo('home');
     } else {
-      window.alert('Nombre de usuario o contraseña incorrectos.');
+      swal ( "Error", "Nombre de usuario o contraseña incorrectos.", "error" );
       this.Application.logedUser = null;
       this.router.transitionTo('/');
     }
@@ -62,13 +67,12 @@ export default class ApplicationController extends Controller {
   @action
   onClickLogout() {
     this.Application.logedUser = null;
-    sessionStorage.removeItem("usuario"); // Eliminamos la sesión del usuario actual
+    sessionStorage.removeItem('usuario'); // Eliminamos la sesión del usuario actual
     this.router.transitionTo('/');
   }
-  
 
   get isLoggedIn() {
     // Verifica si hay un usuario en la sesión
-    return sessionStorage.getItem("usuario");
+    return sessionStorage.getItem('usuario');
   }
 }

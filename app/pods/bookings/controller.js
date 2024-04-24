@@ -10,7 +10,7 @@ export default class BookingsController extends Controller {
   // Función que al hacer click en el botón nos redirige a la subruta 'booking-card' y le pasa como parámetro un objeto que representa el booking que queremos editar
   @action
   goToBookingCard(booking) {
-    this.Bookings.selectedBooking = booking; 
+    this.Bookings.selectedBooking = booking;
     this.Bookings.createBooking = false; // Cambiamos la variable reactiva a false porque queremos editar un booking existente
     this.Bookings.smallForm = false;
     this.router.transitionTo('bookings.booking-card', booking);
@@ -36,7 +36,7 @@ export default class BookingsController extends Controller {
   @action
   onClickDelete() {
     this.Bookings.smallForm = true;
-    let newBooking = {
+    let newBooking2 = {
       id: null,
       hotelId: '',
       startDate: '',
@@ -44,7 +44,7 @@ export default class BookingsController extends Controller {
       description: '',
       pax: 0,
     };
-    this.Bookings.selectedBooking = newBooking;
-    this.router.transitionTo('bookings.booking-card', newBooking);
+    this.Bookings.selectedBooking = newBooking2;
+    this.router.transitionTo('bookings.booking-card', newBooking2);
   }
 }
