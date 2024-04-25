@@ -13,6 +13,23 @@ export default class BookingsBookingCardController extends Controller {
   // Propiedad que asignará el objeto booking seleccionado en el template para editarlo aquí en booking-card (se asigna en el route)
   @tracked booking = null;
 
+  // Propiedades para calcular la fecha actual y convertirla a 'string'
+  @tracked fecha = new Date();
+  @tracked year = null;
+  @tracked day = null;
+  @tracked month = null;
+  @tracked actualDate = null;
+
+  init(){
+    super.init(...arguments);
+    // Calculamos fecha actual y la parseamos a string para poder compararla con el formato de las fechas de la lista de Bookings
+    this.year = this.fecha.getFullYear();
+    this.month = this.fecha.getMonth() + 1;
+    this.day = this.fecha.getDate();
+    this.actualDate = this.year.toString() + "-0" + this.month.toString() + "-" + this.day.toString();
+  }
+  
+
   // Seteamos los campos introducidos en los inputs del formulario como nuevo valor
   @action
   onInputStartDate(e) {
@@ -55,7 +72,6 @@ export default class BookingsBookingCardController extends Controller {
   // Función que llama a otra del servicio de la ruta 'bookings' que almacena localmente los objetos booking una vez hacemos click en el botón de confirmar del template
   @action
   saveBooking() {
-    debugger
     let arrayId = []; // Iniciamos array vacío que contendrá los ID's de la lista de Bookings
     let biggerNumber = 0; // Variable para calcular el nuevo ID incremental
     console.log(this.Bookings.createBooking);
@@ -67,9 +83,12 @@ export default class BookingsBookingCardController extends Controller {
       this.Bookings.selectedBooking.pax == ''
     ) {
       swal("Warning", "Debes rellenar los campos correctamente para crear un nuevo Booking.", "warning");
-    // Validación para comprobar que las fecha sean correctas
+    // Validaciones para comprobar que las fecha sean correctas
     }else if(this.Bookings.selectedBooking.startDate > this.Bookings.selectedBooking.endDate) {
-        swal("Warning", "No se puede seleccionar una fecha de salida anterior a la fecha de entrada", "warning");
+      swal("Warning", "No se puede seleccionar una fecha de salida anterior a la fecha de entrada", "warning");
+    }else if(this.actualDate > this.Bookings.selectedBooking.startDate || this.actualDate > this.Bookings.selectedBooking.endDate){
+      debugger
+      swal("Warning", "No se puede seleccionar una fecha pasada", "warning");
     }else {
       if (this.Bookings.createBooking) {
         // Comprobamos la variable reactiva del Application, si está en 'true' es que queremos crear nuevo Booking, y si en 'false' editar uno existente
@@ -98,8 +117,8 @@ export default class BookingsBookingCardController extends Controller {
 
   @action
   deleteBooking() {
-    if (this.Bookings.selectedBooking.hotelId == '') {
-      swal("Warning", "Debes introducir el ID del hotel", "warning");
+    if (this.Bookings.selectedBooking.id == null) {
+      swal("Warning", "Debes introducir el ID del Booking", "warning");
     }else{
       for (let i = 0; i < this.Bookings.bookingList.length; i++) {
       if(this.Bookings.bookingList[i].id == this.Bookings.selectedBooking.id){

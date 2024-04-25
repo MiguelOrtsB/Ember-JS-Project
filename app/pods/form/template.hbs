@@ -1,4 +1,7 @@
 <MenuBar />
+<div class="search-div">
+    <button class="booking-button" type="button" {{on "click" this.hotelSearch}}>Search 🔎</button>
+</div>
 <div class="rentals">
     <ul class="results">
         {{#each this.Form.hotelList.accommodations as |hotel|}}

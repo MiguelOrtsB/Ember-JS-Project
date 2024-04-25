@@ -95,6 +95,10 @@ li {
     margin-top: 10px;
 }
 
+.search-div {
+    text-align: center;
+}
+
 .booking-button-create {
     background-color: green;
     color: white;
