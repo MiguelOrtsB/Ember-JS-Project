@@ -7,7 +7,7 @@ export default class FormController extends Controller {
 
   @action
   hotelSearch(){
-    debugger
+    let searchName;
     swal({
       text: 'Search for a hotel. e.g. "Hotel Isla Mallorca".',
       content: "input",
@@ -19,8 +19,8 @@ export default class FormController extends Controller {
     .then(name => {
       if (!name) throw null;
     
-      // Convertimos el nombre a minúsculas para comparación sin distinción entre mayúsculas y minúsculas
-      const searchName = name.toLowerCase();
+      // Convertimos el nombre a minúsculas para comparar sin distinción entre mayúsculas y minúsculas
+      searchName = name.toLowerCase();
     
       return fetch(`/api/accommodations.json`);
     })
@@ -32,17 +32,23 @@ export default class FormController extends Controller {
     })
     .then(data => {
       const hotels = data.accommodations;
+      let hotelEncontrado = false;
+      let resultadoHotel = null;
+
+      for(let i = 0; i < hotels.length; i++){
+        if(hotels[i].name.toLowerCase() == searchName){
+            hotelEncontrado = true;
+            resultadoHotel = hotels[i];
+        }
+      }
     
-      // Busca el hotel que coincida exactamente con el nombre proporcionado por el usuario
-      const hotel = hotels.find(h => h.name.toLowerCase() === searchName);
-    
-      if (!hotel) {
+      if (!hotelEncontrado) {
         return swal("No hotel was found!");
       }
     
-      const name = hotel.name;
-      const imageURL = hotel.image;
-      const stars = '⭐'.repeat(hotel.stars); // Convertir el número de estrellas en emojis
+      const name = resultadoHotel.name;
+      const imageURL = resultadoHotel.image;
+      const stars = '⭐'.repeat(resultadoHotel.stars); // Convertir el número de estrellas en emojis
     
       swal({
         title: "Top result:",

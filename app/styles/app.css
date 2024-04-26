@@ -58,7 +58,7 @@ th, td {
 }
 
 .bookingsTd, .bookingsTh {
-    width: 16% !important;
+    width: 7% !important;
     border: black 1px solid;
 }
 
@@ -92,6 +92,15 @@ li {
     border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
+}
+
+.booking-button-2 {
+    background-color: #016aba;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
     margin-top: 10px;
 }
 
@@ -117,6 +126,15 @@ li {
     padding: 10px 20px;
     cursor: pointer;
     margin-top: 10px;
+}
+
+.booking-button-delete-2 {
+    background-color: rgb(217, 59, 59);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
 }
 
 .booking-div {

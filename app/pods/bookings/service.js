@@ -13,10 +13,10 @@ export default class BookingsService extends Service {
   @tracked createBooking = null;
 
   // Variable que contendrá en nuevo Booking creado en el controller de la ruta booking-card
-  @tracked newBooking = null;
+  // @tracked newBooking = null;
 
   // Variable que asignará en nuevo ID (en el cotroller del 'boking-card') del nuevo Booking
-  @tracked newId = null;
+  // @tracked newId = null;
 
   // Variable para desplegar el formulario grande (de Editar/Crear) o el pequeño (de eliminar) en la ruta 'booking-card'
   @tracked smallForm = null;

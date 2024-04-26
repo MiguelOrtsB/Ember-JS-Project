@@ -58,9 +58,10 @@ export default class BookingsBookingCardController extends Controller {
     set(this.Bookings.selectedBooking, 'pax', e.target.value);
   }
 
+  // Asignamos dinámicamente el Booking ID introducido que queremos eliminar
   @action
   onInputBookingId(e) {
-    set(this.Bookings.selectedBooking, 'id', e.target.value);
+    set(this.Bookings, "selectedBooking", this.Bookings.bookingList.findBy("id", e.target.value));
   }
 
   // Función que imprime las dos formas de llamar al parámetro (objeto booking) pasado en la ruta, el cuál es el que se quiere editar
@@ -96,17 +97,19 @@ export default class BookingsBookingCardController extends Controller {
           arrayId.push(this.Bookings.bookingList[i].id); // Recorremos la lista de Bookings y introducimos los ID's en el array creado anteriormente
         }
         biggerNumber = Math.max(...arrayId); // Calculamos el número más grande del array de ID's
-        this.Bookings.newId = biggerNumber + 1; // Y le incrementamos en 1 el valor y se lo asignamos a la variable creada en el service de la ruta Booking
-        this.Bookings.newBooking = {
-          // Creamos el nuevo Booking con su ID incremental y con los valores recogidos de los inputs del template
-          id: this.Bookings.newId,
-          hotelId: this.Bookings.selectedBooking.hotelId,
-          startDate: this.Bookings.selectedBooking.startDate,
-          endDate: this.Bookings.selectedBooking.endDate,
-          description: this.Bookings.selectedBooking.description,
-          pax: this.Bookings.selectedBooking.pax,
-        };
-        this.Bookings.bookingList.push(this.Bookings.newBooking); // Y lo pusheamos a la lista que contiene todos los Bookings
+        let newId = biggerNumber + 1; // Y le incrementamos en 1 el valor y se lo asignamos a la variable creada en el service de la ruta Booking
+        // this.Bookings.newBooking = {
+        //   // Creamos el nuevo Booking con su ID incremental y con los valores recogidos de los inputs del template
+        //   id: this.Bookings.newId,
+        //   hotelId: this.Bookings.selectedBooking.hotelId,
+        //   startDate: this.Bookings.selectedBooking.startDate,
+        //   endDate: this.Bookings.selectedBooking.endDate,
+        //   description: this.Bookings.selectedBooking.description,
+        //   pax: this.Bookings.selectedBooking.pax,
+        // };
+        this.Bookings.selectedBooking.id = newId.toString(); // Convertimos el ID en string (porque así están guardados en la lista)
+        // this.Bookings.bookingList.push(this.Bookings.newBooking); 
+        this.Bookings.bookingList.pushObject(this.Bookings.selectedBooking); // Y lo pusheamos a la lista que contiene todos los Bookings
       } else {
         // AQUÍ IRÁ LA LÓGICA PARA CUANDO EDITEMOS LOS BOOKINGS
       }
@@ -120,12 +123,14 @@ export default class BookingsBookingCardController extends Controller {
     if (this.Bookings.selectedBooking.id == null) {
       swal("Warning", "Debes introducir el ID del Booking", "warning");
     }else{
-      for (let i = 0; i < this.Bookings.bookingList.length; i++) {
-      if(this.Bookings.bookingList[i].id == this.Bookings.selectedBooking.id){
-        this.Bookings.bookingList.splice(i, 1); // Elimina el elemento en la posición 'i'
-        break;
-      }
-    }
+      swal("Warning", "Estás seguro que lo quieres eliminar?", "warning"); // IMPLEMENTAR QUE CUANDO SE QUIERA ELIMINAR PREGUNTAR AL USUARIO SI SEGUIR ADELANTE O CANCELAR!!!!
+      this.Bookings.bookingList.removeObject(this.Bookings.selectedBooking);
+      // for (let i = 0; i < this.Bookings.bookingList.length; i++) {
+      // if(this.Bookings.bookingList[i].id == this.Bookings.selectedBooking.id){
+      //   this.Bookings.bookingList.splice(i, 1); // Elimina el elemento en la posición 'i'
+      //   break;
+      // }
+    // }
     }
     this.Bookings.saveBookingList(); // Y lo guardamos con esta función
     this.router.transitionTo('bookings');

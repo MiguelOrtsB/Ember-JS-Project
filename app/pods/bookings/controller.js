@@ -47,4 +47,9 @@ export default class BookingsController extends Controller {
     this.Bookings.selectedBooking = newBooking2;
     this.router.transitionTo('bookings.booking-card', newBooking2);
   }
+
+  @action
+  eliminarBooking(booking){
+    this.Bookings.bookingList.removeObject(booking);
+  }
 }

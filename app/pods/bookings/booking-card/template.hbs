@@ -23,7 +23,7 @@
                 {{else}}
                     <select name="pets" id="hotelId-select" {{on "change" this.onInputHotelId}} value={{this.Bookings.selectedBooking.hotelId}}>
                             <option value="">--Chose Hotel ID--</option>
-                            {{#each this.Form.hotelList.accommodations as |hotel|}}
+                            {{#each this.Form.hotelList as |hotel|}}
                                 <option>{{hotel.id}}</option>
                             {{/each}}
                     </select>

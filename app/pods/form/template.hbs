@@ -1,10 +1,10 @@
 <MenuBar />
 <div class="search-div">
-    <button class="booking-button" type="button" {{on "click" this.hotelSearch}}>Search 🔎</button>
+    <button class="booking-button-2" type="button" {{on "click" this.hotelSearch}}>Search 🔎</button>
 </div>
 <div class="rentals">
     <ul class="results">
-        {{#each this.Form.hotelList.accommodations as |hotel|}}
+        {{#each this.Form.hotelListSearch as |hotel|}}
             <li><HotelList @hotel = {{hotel}} /></li> {{!-- Pasamos cada registro de la lista (hotel) como parámetro del componente --}}
         {{/each}}
     </ul>
