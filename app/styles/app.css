@@ -149,6 +149,23 @@ li {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.input-name, .input-country {
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.label-search {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    margin-right: 5px;
+}
+
+.results {
+    padding: 0;
+}
+
 /* A partir de aquí los estilos son preestablecidos, sacados del tutorial de Ember */
 
 .rentals input {

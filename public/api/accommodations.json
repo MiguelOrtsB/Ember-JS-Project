@@ -99,6 +99,86 @@
       "price": 67,
       "stars": 3,
       "image": "https://staygenerator.com/web/media/gallery-images/paris/new%20photo%20gallery%202022/generator-paris-entrance.jpg?width=1024&mode=max&quality=100"
+    },
+    {
+      "type": "hotel",
+      "id": "hilton-berlin",
+      "name": "Hilton Berlin",
+      "country": "Germany",
+      "city": "Berlin",
+      "price": 209,
+      "stars": 4,
+      "image": "https://www.hilton.com/im/en/BERHITW/14238151/hiltonberlin-exterior-highres.jpg?impolicy=crop&cw=4500&ch=2519&gravity=NorthWest&xposition=0&yposition=240&rw=768&rh=430"
+    },
+    {
+      "type": "hotel",
+      "id": "freehand-los-angeles",
+      "name": "Freehand Los Angeles",
+      "country": "US",
+      "city": "Los Angeles",
+      "price": 74,
+      "stars": 4,
+      "image": "https://freehandhotels.com/los-angeles/wp-content/uploads/sites/4/2024/01/broken-shaker-los-angeles-freehand-hotel-rooftop-high.jpg"
+    },
+    {
+      "type": "hotel",
+      "id": "the-empire-hotel",
+      "name": "The Empire Hotel",
+      "country": "US",
+      "city": "New York",
+      "price": 241,
+      "stars": 4,
+      "image": "https://image-tc.galaxy.tf/wijpeg-8ksuwzu5wud70kuuzdkm2wq1s/rooftop-plunge-pool-at-the-empire-hotel-nyc.jpg?width=1200"
+    },
+    {
+      "type": "hotel",
+      "id": "otivm-hotel",
+      "name": "Otivm Hotel",
+      "country": "Italy",
+      "city": "Rome",
+      "price": 250,
+      "stars": 4,
+      "image": "http://otiumhotel.eu/wp-content/uploads/2018/01/ROOFTOP-VIEW.jpg"
+    },
+    {
+      "type": "hotel",
+      "id": "iberostar-selection-lisboa",
+      "name": "Iberostar Selection Lisboa",
+      "country": "Portugal",
+      "city": "Lisboa",
+      "price": 194,
+      "stars": 5,
+      "image": "https://apiimg.iberostar.com/uploads/image/30462/crops/16:9/1920/image.jpeg"
+    },
+    {
+      "type": "hotel",
+      "id": "hotel-nacional-de-cuba",
+      "name": "Hotel Nacional de Cuba",
+      "country": "Cuba",
+      "city": "La Habana",
+      "price": 186,
+      "stars": 5,
+      "image": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhElPNF7f_uEGxmRmIraXUYPTCm4BkxvUbtQ8lrg1OtwwfmZXC7s1qjU3qOLz4VTAsYmcwzqnAsbjN5XasCIoiFrbh0BJu1cpk6QdHCqdC-MaFtIcTMs_Iwlm--NQYCe1E0RRhWDimxzIJtU85rFvpKV1-_C1auANSfXInvta6n4ml-hakJdEiZh=w287-h192-n-k-rw-no-v1"
+    },
+    {
+      "type": "hotel",
+      "id": "hotel-edison",
+      "name": "Hotel Edison",
+      "country": "US",
+      "city": "New York",
+      "price": 184,
+      "stars": 4,
+      "image": "https://www.edisonhotelnyc.com/photogallery/large/hotel/L1120410-copy.jpg"
+    },
+    {
+      "type": "hotel",
+      "id": "hard-rock-hotel-new-york",
+      "name": "Hard Rock Hotel New York",
+      "country": "US",
+      "city": "New York",
+      "price": 388,
+      "stars": 4,
+      "image": "https://hotel.hardrock.com/new-york/files/6382/22121_HardRockHotel_Exterior_018.jpg"
     }
   ]
 }

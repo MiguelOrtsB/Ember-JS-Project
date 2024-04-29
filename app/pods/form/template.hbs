@@ -1,5 +1,10 @@
 <MenuBar />
 <div class="search-div">
+    <label for="input-name" class="label-search">Search By: </label>
+    <input type="text" class="input-name" placeholder="Hotel name..." {{on "input" this.onInputName}}>
+    <label for="input-country" class="label-search">Or: </label>
+    <input type="text" class="input-country" placeholder="Country..." {{on "input" this.onInputCountry}}>
+    <label for="input-country" class="label-search">Also: </label>
     <button class="booking-button-2" type="button" {{on "click" this.hotelSearch}}>Search 🔎</button>
 </div>
 <div class="rentals">

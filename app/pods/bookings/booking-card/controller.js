@@ -123,8 +123,20 @@ export default class BookingsBookingCardController extends Controller {
     if (this.Bookings.selectedBooking.id == null) {
       swal("Warning", "Debes introducir el ID del Booking", "warning");
     }else{
-      swal("Warning", "Estás seguro que lo quieres eliminar?", "warning"); // IMPLEMENTAR QUE CUANDO SE QUIERA ELIMINAR PREGUNTAR AL USUARIO SI SEGUIR ADELANTE O CANCELAR!!!!
-      this.Bookings.bookingList.removeObject(this.Bookings.selectedBooking);
+      swal({
+        title: "Estás seguro?",
+        text: "Una vez eliminado, no podrás recuperar este Booking!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          this.Bookings.bookingList.removeObject(this.Bookings.selectedBooking);
+        } else {
+          swal("Se ha cancelado la eliminación con éxito!");
+        }
+      });
       // for (let i = 0; i < this.Bookings.bookingList.length; i++) {
       // if(this.Bookings.bookingList[i].id == this.Bookings.selectedBooking.id){
       //   this.Bookings.bookingList.splice(i, 1); // Elimina el elemento en la posición 'i'

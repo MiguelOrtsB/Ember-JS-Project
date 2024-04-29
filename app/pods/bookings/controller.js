@@ -50,6 +50,19 @@ export default class BookingsController extends Controller {
 
   @action
   eliminarBooking(booking){
-    this.Bookings.bookingList.removeObject(booking);
+    swal({
+      title: "Estás seguro?",
+      text: "Una vez eliminado, no podrás recuperar este Booking!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        this.Bookings.bookingList.removeObject(booking);
+      } else {
+        swal("Se ha cancelado la eliminación con éxito!");
+      }
+    });
   }
 }
