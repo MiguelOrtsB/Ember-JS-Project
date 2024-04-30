@@ -6,7 +6,8 @@
             "startDate": "2024-05-01",
             "endDate": "2024-05-10",
             "description": "-",
-            "pax": 4
+            "pax": 4,
+            "user": "Pepe"
         },
         {
             "id": "2",
@@ -14,7 +15,8 @@
             "startDate": "2024-01-01",
             "endDate": "2024-01-10",
             "description": "-",
-            "pax": 2
+            "pax": 2,
+            "user": "Miguel"
         },
         {
             "id": "3",
@@ -22,7 +24,8 @@
             "startDate": "2024-02-10",
             "endDate": "2024-02-15",
             "description": "-",
-            "pax": 2
+            "pax": 2,
+            "user": "Pepe"
         },
         {
             "id": "4",
@@ -30,7 +33,8 @@
             "startDate": "2024-01-20",
             "endDate": "2024-01-30",
             "description": "-",
-            "pax": 3
+            "pax": 3,
+            "user": "Maria"
         },
         {
             "id": "5",
@@ -38,7 +42,8 @@
             "startDate": "2024-03-13",
             "endDate": "2024-05-17",
             "description": "-",
-            "pax": 4
+            "pax": 4,
+            "user": "Maria"
         },
         {
             "id": "6",
@@ -46,7 +51,8 @@
             "startDate": "2024-04-04",
             "endDate": "2024-04-8",
             "description": "-",
-            "pax": 2
+            "pax": 2,
+            "user": "Axel"
         },
         {
             "id": "7",
@@ -54,7 +60,8 @@
             "startDate": "2024-02-10",
             "endDate": "2024-02-15",
             "description": "-",
-            "pax": 2
+            "pax": 2,
+            "user": "Pepe"
         },
         {
             "id": "8",
@@ -62,7 +69,8 @@
             "startDate": "2024-01-28",
             "endDate": "2024-01-30",
             "description": "-",
-            "pax": 3
+            "pax": 3,
+            "user": "Antonio"
         },
         {
             "id": "9",
@@ -70,7 +78,8 @@
             "startDate": "2024-05-01",
             "endDate": "2024-05-10",
             "description": "-",
-            "pax": 2
+            "pax": 2,
+            "user": "Paula"
         },
         {
             "id": "10",
@@ -78,7 +87,8 @@
             "startDate": "2024-05-01",
             "endDate": "2024-05-10",
             "description": "-",
-            "pax": 4
+            "pax": 4,
+            "user": "Paula"
         }
     ]
 }

@@ -1,0 +1,6 @@
+{
+  "name": "proyecto2",
+  "dependencies": {
+    "pdfmake": "^0.2.10"
+  }
+}

@@ -14,7 +14,8 @@
             <th class="bookingsTh">End Date</th>
             <th class="bookingsTh">Description</th>
             <th class="bookingsTh">Pax</th>
-            <th class="bookingsTh">Actions</th>
+            <th class="bookingsTh">User</th>
+            <th class="bookingsTh-actions">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -26,10 +27,12 @@
                 <td class="bookingsTd">{{booking.endDate}}</td>
                 <td class="bookingsTd">{{booking.description}}</td>
                 <td class="bookingsTd">{{booking.pax}}</td>
-                <td class="bookingsTd">
-                    <button class="booking-button" type="button" {{on "click" (fn this.goToBookingCard booking)}}>Edit</button> {{!-- Al hacer click activamos función que redirige a la página de 
-                    booking-card y le pasa como parámetro el booking que queremos editar--}}
-                    <button class="booking-button-delete-2" type="button" {{on "click" (fn this.eliminarBooking booking)}}>Delete</button>
+                <td class="bookingsTd">{{booking.user}}</td>
+                <td class="bookingsTd-actions">
+                    <button class="booking-button" type="button" title="Edit Booking" {{on "click" (fn this.goToBookingCard booking)}}>Edit</button> {{!-- Al hacer click activamos función que redirige a la página de 
+                    booking-card y le pasa como parámetro el booking que queremos editar o eliminar--}}
+                    <button class="booking-button-delete-2" type="button" title="Delete Booking" {{on "click" (fn this.eliminarBooking booking)}}>Delete</button>
+                    <button class="pdf-button" title="Download PDF" {{on "click" (fn this.createPdf booking)}}>🢃</button>
                 </td>
             </tr>
         {{/each}}

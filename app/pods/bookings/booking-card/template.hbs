@@ -2,7 +2,7 @@
     <form class="booking-form">
         <h3 class="h3-form">Formulario</h3>
         <label for="booking-delete" class="booking-delete-label">Selecciona el ID del Booking que quieres eliminar: </label>
-        <select name="booking-delete" id="booking-delete" class="booking-delete" {{on "change" this.onInputBookingId}} value={{this.Bookings.selectedBooking.id}}> {{!-- FALTA IMPLEMENTAR --}}
+        <select name="booking-delete" id="booking-delete" class="booking-delete" {{on "change" this.onInputBookingId}} value={{this.Bookings.selectedBooking.id}}> 
                 <option value="">--Chose ID--</option>
                 {{#each this.Bookings.bookingList as |booking|}}
                     <option>{{booking.id}}</option>

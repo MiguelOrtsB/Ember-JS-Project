@@ -98,6 +98,7 @@ export default class BookingsBookingCardController extends Controller {
         }
         biggerNumber = Math.max(...arrayId); // Calculamos el número más grande del array de ID's
         let newId = biggerNumber + 1; // Y le incrementamos en 1 el valor y se lo asignamos a la variable creada en el service de la ruta Booking
+
         // this.Bookings.newBooking = {
         //   // Creamos el nuevo Booking con su ID incremental y con los valores recogidos de los inputs del template
         //   id: this.Bookings.newId,
@@ -107,8 +108,12 @@ export default class BookingsBookingCardController extends Controller {
         //   description: this.Bookings.selectedBooking.description,
         //   pax: this.Bookings.selectedBooking.pax,
         // };
-        this.Bookings.selectedBooking.id = newId.toString(); // Convertimos el ID en string (porque así están guardados en la lista)
         // this.Bookings.bookingList.push(this.Bookings.newBooking); 
+        
+        this.Bookings.selectedBooking.id = newId.toString(); // Convertimos el ID en string (porque así están guardados en la lista)
+        let usuario = sessionStorage.getItem("usuario");
+        usuario = usuario.trim().replace(/^"(.*)"$/, '$1');
+        this.Bookings.selectedBooking.user = usuario; // Asignamos el usuario de realización del booking del sessionStorage
         this.Bookings.bookingList.pushObject(this.Bookings.selectedBooking); // Y lo pusheamos a la lista que contiene todos los Bookings
       } else {
         // AQUÍ IRÁ LA LÓGICA PARA CUANDO EDITEMOS LOS BOOKINGS
@@ -123,6 +128,7 @@ export default class BookingsBookingCardController extends Controller {
     if (this.Bookings.selectedBooking.id == null) {
       swal("Warning", "Debes introducir el ID del Booking", "warning");
     }else{
+      console.log(this.Bookings.selectedBooking)
       swal({
         title: "Estás seguro?",
         text: "Una vez eliminado, no podrás recuperar este Booking!",
