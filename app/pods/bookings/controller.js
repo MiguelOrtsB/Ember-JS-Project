@@ -64,6 +64,7 @@ export default class BookingsController extends Controller {
     .then((willDelete) => {
       if (willDelete) {
         this.Bookings.bookingList.removeObject(booking);
+        this.Bookings.saveBookingList();
       } else {
         swal("Se ha cancelado la eliminación con éxito!");
       }
@@ -73,8 +74,9 @@ export default class BookingsController extends Controller {
   // Método para crear el PDF con toda la información a cerca del Booking
   @action
   createPdf(booking) {
-    // Calculamos el precio del Booking
     let win = window.open('', '_blank');
+
+    // Calculamos el precio del Booking
     let precio = 0;
     for (let i = 0; i < this.Form.hotelList.length; i++) {
       if (this.Form.hotelList[i].id == booking.hotelId) {
@@ -83,9 +85,14 @@ export default class BookingsController extends Controller {
     }
 
     // Calculamos la fecha actual
-    let tiempoTranscurrido = Date.now();
-    let hoy = new Date(tiempoTranscurrido);
-    let actual = hoy.toLocaleDateString();
+    let fecha = new Date();
+    let year = fecha.getFullYear();
+    let month = fecha.getMonth() + 1;
+    let day = fecha.getDate();
+    let actualDate = year.toString() + "-0" + month.toString() + "-0" + day.toString();
+    // let tiempoTranscurrido = Date.now();
+    // let hoy = new Date(tiempoTranscurrido);
+    // let actual = hoy.toLocaleDateString();
 
     // Calculamos la cantidad de dias del Booking
     let fecha1 = new Date(booking.startDate);
@@ -123,7 +130,7 @@ export default class BookingsController extends Controller {
       },
       {
         text: [
-          'Fecha de expedición: ', {text: actual, bold: true}, '\n',
+          'Fecha de expedición: ', {text: actualDate, bold: true}, '\n',
           'ID de Booking: ', {text: booking.id, bold: true}, '\n',
           'ID de Hotel: ', {text: booking.hotelId, bold: true}, '\n',
           'Check-in : ', {text: booking.startDate, bold: true}, '\n', 
@@ -146,8 +153,20 @@ export default class BookingsController extends Controller {
           headerRows: 1,
           widths: ['*', 'auto', 'auto', 'auto', 'auto'],
           body: [
-            ['Descripción', 'Cantidad pax', 'Cantidad noches', 'Precio/noche', 'Total'],
+            [{text: 'Descripción', bold: true}, 'Cantidad pax', 'Cantidad noches', 'Precio/noche', 'Total'],
             ['Reserva', booking.pax, dias, precio + '€', precioTotal + '€'],
+          ]
+        },
+        layout: 'lightHorizontalLines',
+        margin: [0, 0, 0, 20] 
+      },
+      {
+        table: {
+          headerRows: 1,
+          widths: ['*'],
+          body: [
+            [{text: 'Comentarios', bold: true}],
+            [booking.description],
           ]
         },
         layout: 'lightHorizontalLines',
@@ -158,10 +177,10 @@ export default class BookingsController extends Controller {
           headerRows: 1,
           widths: ['*', 'auto', 'auto', 'auto', 'auto'],
           body: [
-            ['Extras', 'Cantidad pax', 'Cantidad/pers', 'Precio/pers', 'Total'],
+            [{text: 'Extras', bold: true}, 'Cantidad pax', 'Cantidad/pers', 'Precio/pers', 'Total'],
             ['Transfer', '-', '-', '-', '-'],
             ['Parking', '-', '-', '-', '-'],
-            ['Spa', '-', '-', '-', '-'],
+            ['Spa & Wellness', '-', '-', '-', '-'],
             ['Catering', '-', '-', '-', '-'],
             ['Excursiones', '-', '-', '-', '-'],
           ]
@@ -178,26 +197,33 @@ export default class BookingsController extends Controller {
         margin: [0, 0, 0, 20] 
       },
       {
-        alignment: 'justify',
+        text: 'Para cualquier duda: ',
+        alignment: 'center'
+      },
+      {
+        alignment: 'center',
         columns: [
           {
             text: 'Código QR',
-            bold: true
-          },
-          {
-            text: 'Total',
-            bold: true
+            bold: true,
+            margin: [0, 10, 0, 0]
           }
         ]
       },
-      ],
+      {
+        qr: 'https://mtsglobe.com/',
+        fit: 150,
+        foreground: 'red',
+        alignment: 'center',
+        margin: [0, 20, 0, 0]
+      }
+    ],
       footer: {
         columns: [
-          { text: 'Carrer del Fluvià, 1, 1 + 3º izda, Llevant, 07009 Palma, Illes Balears', alignment: 'center' },
-          { text: 'Teléfono: +34 871170555', alignment: 'center' },
-          { text: '', alignment: 'right' }, // Dejar espacio para el número de página
+          { text: 'Carrer del Fluvià, 1, 1 + 3º izda, Llevant, 07009 Palma, Illes Balears', alignment: 'center', fontSize: 10 },
+          { text: 'Teléfono: +34 871170555', alignment: 'center', fontSize: 10 }
         ],
-        margin: [40, 10, 40, 0], // Margen del footer
+        margin: [40, 10, 40, 0], 
       },
       styles: {
         header: {
