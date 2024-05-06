@@ -90,8 +90,6 @@ export default class BookingsBookingCardController extends Controller {
       // Validaciones para comprobar que las fecha sean correctas
       }else if(this.Bookings.selectedBooking.startDate > this.Bookings.selectedBooking.endDate) {
         swal("Warning", "No se puede seleccionar una fecha de salida anterior a la fecha de entrada", "warning");
-      }else if(this.actualDate > this.Bookings.selectedBooking.startDate || this.actualDate > this.Bookings.selectedBooking.endDate){
-        swal("Warning", "No se puede seleccionar una fecha pasada", "warning");
       }else {
         // Comprobamos la variable reactiva del Application, si está en 'true' es que queremos crear nuevo Booking, y si en 'false' editar uno existente
         for (let i = 0; i < this.Bookings.bookingList.length; i++) {

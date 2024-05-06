@@ -30,10 +30,10 @@
                 {{/if}}
             </div>
             <div class="booking-form-div">
-                <input type="date" placeholder="Start date" {{on "change" this.onInputStartDate}} value={{this.Bookings.selectedBooking.startDate}}>
+                <input type="date" placeholder="Start date" {{on "change" this.onInputStartDate}} value={{this.Bookings.selectedBooking.startDate}} min={{this.actualDate}}>
             </div>
             <div class="booking-form-div">
-                <input type="date" placeholder="End date" {{on "change" this.onInputEndDate}} value={{this.Bookings.selectedBooking.endDate}}>
+                <input type="date" placeholder="End date" {{on "change" this.onInputEndDate}} value={{this.Bookings.selectedBooking.endDate}} min={{this.actualDate}}>
             </div>
             <div class="booking-form-div">
                 <input type="textarea" placeholder="Description" {{on "change" this.onInputDescription}} value={{this.Bookings.selectedBooking.description}}>

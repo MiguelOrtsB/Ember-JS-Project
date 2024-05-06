@@ -181,6 +181,11 @@ li {
     background-color: gray;
     border-radius: 5px;
 }
+
+.error-not-found {
+    text-align: center;
+    margin-top: 50px;
+}
 /* A partir de aquí los estilos son preestablecidos, sacados del tutorial de Ember */
 
 .rentals input {
