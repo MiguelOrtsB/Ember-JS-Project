@@ -5,6 +5,7 @@ import { tracked } from '@glimmer/tracking';
 import { set, get } from '@ember/object';
 import swal from 'sweetalert';
 
+
 export default class BookingsBookingCardController extends Controller {
   @service Bookings;
   @service router;
@@ -20,15 +21,19 @@ export default class BookingsBookingCardController extends Controller {
   @tracked month = null;
   @tracked actualDate = null;
 
-  init(){
+  init() {
     super.init(...arguments);
     // Calculamos fecha actual y la parseamos a string para poder compararla con el formato de las fechas de la lista de Bookings
     this.year = this.fecha.getFullYear();
     this.month = this.fecha.getMonth() + 1;
     this.day = this.fecha.getDate();
-    this.actualDate = this.year.toString() + "-0" + this.month.toString() + "-0" + this.day.toString();
+    this.actualDate =
+      this.year.toString() +
+      '-0' +
+      this.month.toString() +
+      '-0' +
+      this.day.toString();
   }
-  
 
   // Seteamos los campos introducidos en los inputs del formulario como nuevo valor
   @action
@@ -61,7 +66,11 @@ export default class BookingsBookingCardController extends Controller {
   // Asignamos dinámicamente el Booking ID introducido que queremos eliminar
   @action
   onInputBookingId(e) {
-    set(this.Bookings, "selectedBooking", this.Bookings.bookingList.findBy("id", e.target.value));
+    set(
+      this.Bookings,
+      'selectedBooking',
+      this.Bookings.bookingList.findBy('id', e.target.value)
+    );
   }
 
   // Función que imprime las dos formas de llamar al parámetro (objeto booking) pasado en la ruta, el cuál es el que se quiere editar
@@ -76,21 +85,32 @@ export default class BookingsBookingCardController extends Controller {
     let arrayId = []; // Iniciamos array vacío que contendrá los ID's de la lista de Bookings
     let biggerNumber = 0; // Variable para calcular el nuevo ID incremental
     console.log(this.Bookings.createBooking);
-    
+
     // Comprobamos si se desea editar o crear el booking con el condicional para aplicar una lógica u otra
-    if (this.Bookings.createBooking){
+    if (this.Bookings.createBooking) {
       // Si los campos del formulario están vacíos, no permite crear nuevo Booking y muestra mensaje de error
       if (
-      this.Bookings.selectedBooking.hotelId == '' ||
-      this.Bookings.selectedBooking.startDate == '' ||
-      this.Bookings.selectedBooking.endDate == '' ||
-      this.Bookings.selectedBooking.pax == ''
+        this.Bookings.selectedBooking.hotelId == '' ||
+        this.Bookings.selectedBooking.startDate == '' ||
+        this.Bookings.selectedBooking.endDate == '' ||
+        this.Bookings.selectedBooking.pax == ''
       ) {
-        swal("Warning", "Debes rellenar los campos correctamente para crear un nuevo Booking.", "warning");
-      // Validaciones para comprobar que las fecha sean correctas
-      }else if(this.Bookings.selectedBooking.startDate > this.Bookings.selectedBooking.endDate) {
-        swal("Warning", "No se puede seleccionar una fecha de salida anterior a la fecha de entrada", "warning");
-      }else {
+        swal(
+          'Warning',
+          'Debes rellenar los campos correctamente para crear un nuevo Booking.',
+          'warning'
+        );
+        // Validaciones para comprobar que las fecha sean correctas
+      } else if (
+        this.Bookings.selectedBooking.startDate >
+        this.Bookings.selectedBooking.endDate
+      ) {
+        swal(
+          'Warning',
+          'No se puede seleccionar una fecha de salida anterior a la fecha de entrada',
+          'warning'
+        );
+      } else {
         // Comprobamos la variable reactiva del Application, si está en 'true' es que queremos crear nuevo Booking, y si en 'false' editar uno existente
         for (let i = 0; i < this.Bookings.bookingList.length; i++) {
           arrayId.push(this.Bookings.bookingList[i].id); // Recorremos la lista de Bookings y introducimos los ID's en el array creado anteriormente
@@ -98,19 +118,19 @@ export default class BookingsBookingCardController extends Controller {
         biggerNumber = Math.max(...arrayId); // Calculamos el número más grande del array de ID's
         let newId = biggerNumber + 1; // Y le incrementamos en 1 el valor y se lo asignamos a la variable creada en el service de la ruta Booking
 
-          // this.Bookings.newBooking = {
-          //   // Creamos el nuevo Booking con su ID incremental y con los valores recogidos de los inputs del template
-          //   id: this.Bookings.newId,
-          //   hotelId: this.Bookings.selectedBooking.hotelId,
-          //   startDate: this.Bookings.selectedBooking.startDate,
-          //   endDate: this.Bookings.selectedBooking.endDate,
-          //   description: this.Bookings.selectedBooking.description,
-          //   pax: this.Bookings.selectedBooking.pax,
-          // };
-          // this.Bookings.bookingList.push(this.Bookings.newBooking); 
-          
+        // this.Bookings.newBooking = {
+        //   // Creamos el nuevo Booking con su ID incremental y con los valores recogidos de los inputs del template
+        //   id: this.Bookings.newId,
+        //   hotelId: this.Bookings.selectedBooking.hotelId,
+        //   startDate: this.Bookings.selectedBooking.startDate,
+        //   endDate: this.Bookings.selectedBooking.endDate,
+        //   description: this.Bookings.selectedBooking.description,
+        //   pax: this.Bookings.selectedBooking.pax,
+        // };
+        // this.Bookings.bookingList.push(this.Bookings.newBooking);
+
         this.Bookings.selectedBooking.id = newId.toString(); // Convertimos el ID en string (porque así están guardados en la lista)
-        let usuario = sessionStorage.getItem("usuario");
+        let usuario = sessionStorage.getItem('usuario');
         usuario = usuario.trim().replace(/^"(.*)"$/, '$1');
         this.Bookings.selectedBooking.user = usuario; // Asignamos el usuario de realización del booking del sessionStorage
         this.Bookings.bookingList.pushObject(this.Bookings.selectedBooking); // Y lo pusheamos a la lista que contiene todos los Bookings
@@ -118,17 +138,28 @@ export default class BookingsBookingCardController extends Controller {
         this.Bookings.saveBookingList(); // Y lo guardamos con esta función
         this.router.transitionTo('bookings');
       }
-    }else{
+    } else {
       if (
         this.Bookings.selectedBooking.startDate == '' ||
         this.Bookings.selectedBooking.endDate == '' ||
         this.Bookings.selectedBooking.pax == ''
-        ) {
-        swal("Warning", "Debes rellenar los campos correctamente para editar el Booking.", "warning");
+      ) {
+        swal(
+          'Warning',
+          'Debes rellenar los campos correctamente para editar el Booking.',
+          'warning'
+        );
         // Validaciones para comprobar que las fecha sean correctas
-      }else if(this.Bookings.selectedBooking.startDate > this.Bookings.selectedBooking.endDate) {
-        swal("Warning", "No se puede seleccionar una fecha de salida anterior a la fecha de entrada", "warning");
-      }else{
+      } else if (
+        this.Bookings.selectedBooking.startDate >
+        this.Bookings.selectedBooking.endDate
+      ) {
+        swal(
+          'Warning',
+          'No se puede seleccionar una fecha de salida anterior a la fecha de entrada',
+          'warning'
+        );
+      } else {
         this.Bookings.saveBookingList(); // Y lo guardamos con esta función
         this.router.transitionTo('bookings');
       }
@@ -172,8 +203,8 @@ export default class BookingsBookingCardController extends Controller {
   //       //   description: this.Bookings.selectedBooking.description,
   //       //   pax: this.Bookings.selectedBooking.pax,
   //       // };
-  //       // this.Bookings.bookingList.push(this.Bookings.newBooking); 
-        
+  //       // this.Bookings.bookingList.push(this.Bookings.newBooking);
+
   //       this.Bookings.selectedBooking.id = newId.toString(); // Convertimos el ID en string (porque así están guardados en la lista)
   //       let usuario = sessionStorage.getItem("usuario");
   //       usuario = usuario.trim().replace(/^"(.*)"$/, '$1');
@@ -190,17 +221,17 @@ export default class BookingsBookingCardController extends Controller {
   @action
   deleteBooking() {
     if (this.Bookings.selectedBooking.id == null) {
-      swal("Warning", "Debes introducir el ID del Booking", "warning");
-    }else{
-      console.log(this.Bookings.selectedBooking)
+      swal('Warning', 'Debes introducir el ID del Booking', 'warning');
+    } else {
+      console.log(this.Bookings.selectedBooking);
       swal({
-        title: "Estás seguro?",
-        text: "Una vez eliminado, no podrás recuperar este Booking!",
-        icon: "warning",
+        title: 'Estás seguro?',
+        text: 'Una vez eliminado, no podrás recuperar este Booking!',
+        icon: 'warning',
         buttons: true,
         dangerMode: true,
-      })
-      .then((willDelete) => { /* .then es lo último que se ejecutará en la función ya que swal es asíncrona, por lo tanto, no eliminaba correctamente los Bookings porque primero saltaba y
+      }).then((willDelete) => {
+        /* .then es lo último que se ejecutará en la función ya que swal es asíncrona, por lo tanto, no eliminaba correctamente los Bookings porque primero saltaba y
       guardaba la lista actualizada en la función de abajo (saveBookingList()) y luego entraba en el .then, por lo tanto al recargar la página se volvía a ver ese Booking supuestamente
       eliminado... Ahora hemos movido esa funcion saveBookingList() dentro del .then para que se elimine correctamente el Booking y actualice la lista correctamente */
         if (willDelete) {
@@ -208,7 +239,7 @@ export default class BookingsBookingCardController extends Controller {
           this.Bookings.saveBookingList(); // Y lo guardamos con esta función
           this.router.transitionTo('bookings');
         } else {
-          swal("Se ha cancelado la eliminación con éxito!");
+          swal('Se ha cancelado la eliminación con éxito!');
         }
       });
       // for (let i = 0; i < this.Bookings.bookingList.length; i++) {
@@ -216,14 +247,14 @@ export default class BookingsBookingCardController extends Controller {
       //   this.Bookings.bookingList.splice(i, 1); // Elimina el elemento en la posición 'i'
       //   break;
       // }
-    // }
+      // }
     }
     // this.Bookings.saveBookingList(); // Y lo guardamos con esta función (ESTO DEBERÍA ESTAR DENTRO DEL .then PARA QUE EL BOOKING SE BORRE Y SE ACTUALICE EN EL LOCALSTORAGE)
     // this.router.transitionTo('bookings');
   }
 
   @action
-  cancel(){
+  cancel() {
     this.router.transitionTo('bookings');
   }
 }

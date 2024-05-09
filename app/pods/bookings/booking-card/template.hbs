@@ -1,5 +1,5 @@
 {{#if this.Bookings.smallForm}} {{!-- Si le hemos dado al botón de Delete se abrirá el formulario pequeño (de eliminarBooking), sinó el grande--}}
-    <form class="booking-form">
+    <form class="booking-form" onsubmit="return false">
         <h3 class="h3-form">Formulario</h3>
         <label for="booking-delete" class="booking-delete-label">Selecciona el ID del Booking que quieres eliminar: </label>
         <select name="booking-delete" id="booking-delete" class="booking-delete" {{on "change" this.onInputBookingId}} value={{this.Bookings.selectedBooking.id}}> 
@@ -12,7 +12,7 @@
         <button type="button" {{on "click" this.cancel}}>Cancel</button>
     </form>
 {{else}}
-    <form class="booking-form">
+    <form class="booking-form" onsubmit="return false">
             <h3 class="h3-form">Formulario</h3>
             <div class="booking-form-div">
                 <input type="text" class="readonly" placeholder="Booking ID" value={{this.Bookings.selectedBooking.id}} readonly>

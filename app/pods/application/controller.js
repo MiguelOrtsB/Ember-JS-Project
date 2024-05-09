@@ -4,7 +4,6 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import swal from 'sweetalert';
 
-
 export default class ApplicationController extends Controller {
   // Inyectamos los servicios para acceder a las propiedades de router de Ember y para poder acceder al contenido del servicio de Application
   @service router;
@@ -57,7 +56,7 @@ export default class ApplicationController extends Controller {
     if (logged) {
       this.router.transitionTo('home');
     } else {
-      swal ( "Error", "Nombre de usuario o contraseña incorrectos.", "error" );
+      swal('Error', 'Nombre de usuario o contraseña incorrectos.', 'error');
       this.Application.logedUser = null;
       this.router.transitionTo('/');
     }

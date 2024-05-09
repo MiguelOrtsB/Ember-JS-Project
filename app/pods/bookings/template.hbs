@@ -32,7 +32,7 @@
                     <button class="booking-button" type="button" title="Edit Booking" {{on "click" (fn this.goToBookingCard booking)}}>Edit</button> {{!-- Al hacer click activamos función que redirige a la página de 
                     booking-card y le pasa como parámetro el booking que queremos editar o eliminar--}}
                     <button class="booking-button-delete-2" type="button" title="Delete Booking" {{on "click" (fn this.eliminarBooking booking)}}>Delete</button>
-                    <button class="pdf-button" title="Download PDF" {{on "click" (fn this.createPdf booking)}}>🢃</button>
+                    <button class="pdf-button" title="Download PDF" type="button" {{on "click" (fn this.createPdf booking)}}>🢃</button>
                 </td>
             </tr>
         {{/each}}

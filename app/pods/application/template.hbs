@@ -1,13 +1,26 @@
 <div>
-    <form class="login-form">
+    <form class="login-form" onsubmit="return false">
         {{#if this.Application.logedUser}}
             <h4>Bienvenido/a {{this.Application.storageUserName}}</h4>
-            <button type="button" {{on "click" this.onClickLogout}}>Cerrar Sesión</button> 
+            <button class="login-button-2" type="button" {{on "click" this.onClickLogout}}>Log Out</button> 
         {{else}}
-            <h2 class="login">Inicio de Sesión</h2>
-            <input type="text" placeholder="Nombre de usuario" {{on "change" this.onInputUsername}} value={{this.username}} />
-            <input type="password" placeholder="Contraseña" {{on "change" this.onInputPassword}} value={{this.password}} />
-            <button type="button" {{on "click" this.onClickLogin}}>Iniciar Sesión</button> {{!-- Si error, cambiar a type button --}}
+        <div class="div-login">
+            <div class="formulario-login">
+                <div class="label-login">
+                    <label class="login">Welcome to Project<b>Bookings</b></label>
+                </div>
+                <div class="input-div">
+                    <input class="input-login" type="text" placeholder="Username" {{on "change" this.onInputUsername}} value={{this.username}} />
+                </div>
+                <div class="input-div-2">
+                    <input class="input-login" type="password" placeholder="Password" {{on "change" this.onInputPassword}} value={{this.password}} />
+                </div>
+                <button class="login-button" type="button" {{on "click" this.onClickLogin}}>Sign In</button> {{!-- Si error, cambiar a type button --}}
+            </div>
+            <div class="div-login-img">
+                <img src="images/alberca-nueva-frente.jpg" class="login-img">
+            </div>
+        </div>
         {{/if}}
     </form> 
 </div>
