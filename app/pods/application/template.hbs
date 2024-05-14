@@ -4,6 +4,9 @@
             <h4>Bienvenido/a {{this.Application.storageUserName}}</h4>
             <button class="login-button-2" type="button" {{on "click" this.onClickLogout}}>Log Out</button> 
         {{else}}
+        <button value="1" {{on "click" this.consumiendoPromesaFetch}}>Fetch</button>
+        <button value="2" {{on "click" this.consumiendoPromesaAjax}}>Ajax</button>
+        <p>{{this.asynchronous}}</p>
         <div class="div-login">
             <div class="formulario-login">
                 <div class="label-login">
