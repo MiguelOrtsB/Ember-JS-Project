@@ -5,7 +5,6 @@ import { tracked } from '@glimmer/tracking';
 import { set, get } from '@ember/object';
 import swal from 'sweetalert';
 
-
 export default class BookingsBookingCardController extends Controller {
   @service Bookings;
   @service router;
@@ -27,12 +26,35 @@ export default class BookingsBookingCardController extends Controller {
     this.year = this.fecha.getFullYear();
     this.month = this.fecha.getMonth() + 1;
     this.day = this.fecha.getDate();
-    this.actualDate =
-      this.year.toString() +
-      '-0' +
-      this.month.toString() +
-      '-0' +
-      this.day.toString();
+    if (this.month > 9 && this.day > 9) {
+      this.actualDate =
+        this.year.toString() +
+        '-' +
+        this.month.toString() +
+        '-' +
+        this.day.toString();
+    } else if (this.month > 9 && this.day < 10) {
+      this.actualDate =
+        this.year.toString() +
+        '-' +
+        this.month.toString() +
+        '-0' +
+        this.day.toString();
+    } else if (this.month < 10 && this.day > 9) {
+      this.actualDate =
+        this.year.toString() +
+        '-0' +
+        this.month.toString() +
+        '-' +
+        this.day.toString();
+    } else {
+      this.actualDate =
+        this.year.toString() +
+        '-0' +
+        this.month.toString() +
+        '-0' +
+        this.day.toString();
+    }
   }
 
   // Seteamos los campos introducidos en los inputs del formulario como nuevo valor

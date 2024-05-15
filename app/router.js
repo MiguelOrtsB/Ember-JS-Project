@@ -14,4 +14,5 @@ Router.map(function () {
     this.route('booking-card', { path: '/booking-card/:id' }); //La parte :id indica que esta ruta espera un parámetro dinámico en la URL llamado id. Este id podría ser cualquier identificador único que se use para identificar una reserva específica, por ejemplo, el ID de la reserva en la base de datos.
   });
   this.route('not-found', { path: '/*path' });
+  this.route('airports');
 });

@@ -235,7 +235,7 @@ export default class BookingsController extends Controller {
         {
           qr: 'https://mtsglobe.com/',
           fit: 150,
-          foreground: 'red',
+          foreground: 'black',
           alignment: 'center',
           margin: [0, 20, 0, 0],
         },

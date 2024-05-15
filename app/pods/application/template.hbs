@@ -4,8 +4,8 @@
             <h4>Bienvenido/a {{this.Application.storageUserName}}</h4>
             <button class="login-button-2" type="button" {{on "click" this.onClickLogout}}>Log Out</button> 
         {{else}}
-        <button value="1" {{on "click" this.consumiendoPromesaFetch}}>Fetch</button>
-        <button value="2" {{on "click" this.consumiendoPromesaAjax}}>Ajax</button>
+        <button value="1" type="submit" {{on "click" this.consumiendoPromesaFetch}}>Fetch</button>
+        <button value="2" type="submit" {{on "click" this.consumiendoPromesaAjax}}>Ajax</button>
         <p>{{this.asynchronous}}</p>
         <div class="div-login">
             <div class="formulario-login">
@@ -18,7 +18,7 @@
                 <div class="input-div-2">
                     <input class="input-login" type="password" placeholder="Password" {{on "change" this.onInputPassword}} value={{this.password}} />
                 </div>
-                <button class="login-button" type="button" {{on "click" this.onClickLogin}}>Sign In</button> {{!-- Si error, cambiar a type button --}}
+                <button class="login-button" type="button" {{on "click" this.login}}>Sign In</button> {{!-- Si error, cambiar a type button --}}
             </div>
             <div class="div-login-img">
                 <img src="images/alberca-nueva-frente.jpg" class="login-img">
