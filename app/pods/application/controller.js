@@ -75,6 +75,7 @@ export default class ApplicationController extends Controller {
   onClickLogout() {
     this.Application.logedUser = null;
     sessionStorage.removeItem('usuario'); // Eliminamos la sesión del usuario actual
+    sessionStorage.removeItem('token');
     this.router.transitionTo('/');
   }
 
@@ -151,7 +152,7 @@ export default class ApplicationController extends Controller {
     });
   }
 
-  // <-------------------------------------------------------- LOGIN REAL SERVICIO TKAIRPORT ----------------------------------------------------------------------->
+  // <--------------------------------------------------------------- LOGIN REAL SERVICIO TKAIRPORT ----------------------------------------------------------------------->
 
   @action
   login() {
@@ -168,12 +169,15 @@ export default class ApplicationController extends Controller {
       .then((data) => {
         logged = true;
         this.Application.logedUser = data.user;
+        this.Application.token = data;
+        sessionStorage.setItem("token", JSON.stringify(this.Application.token));
         sessionStorage.setItem(
           'usuario',
           JSON.stringify(this.Application.logedUser)
         ); // Guardamos la sesión con el usuario actual
         if (logged) {
           this.router.transitionTo('home');
+
         } else {
           swal('Error', 'Nombre de usuario o contraseña incorrectos.', 'error');
           this.Application.logedUser = null;
@@ -190,7 +194,7 @@ export default class ApplicationController extends Controller {
 
   loginEsb(credentials) {
     return new Promise(async (resolve, reject) => {
-      let me = this;
+      // let me = this;
       let headers = {
         'x-application': 'tkairport',
       };
@@ -266,16 +270,3 @@ export default class ApplicationController extends Controller {
     return encOut;
   }
 }
-
-// {
-//   "user": "miguel.orts",
-//   "userid": "52908",
-//   "domain": "AXISES",
-//   "sessionid": "12351593",
-//   "langid": "en",
-//   "clearcache": false,
-//   "roles": [
-//       "Admin"
-//   ],
-//   "visibility": []
-// }

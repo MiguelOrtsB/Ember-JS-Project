@@ -1,3 +1,24 @@
 <MenuBar />
-Airports
-{{outlet}}
+<h2 class="list-title">Lista de Aeropuertos</h2>
+<table class="users-table">
+    <thead>
+        <tr>
+            <th>Airport Code</th>
+            <th>Name</th>
+            <th>Point Location</th>
+            <th>Iata Code</th>
+            <th>Resort Office ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each this.Airports.airportsList as |airport|}}
+            <tr>
+                <td>{{airport.AIRPORTIATACODE}}</td>
+                <td>{{airport.NAME}}</td>
+                <td>{{airport.OD_POINTLOCATIONID}}</td>
+                <td>{{airport.IATACODE}}</td>
+                <td>{{airport.RESORTOFFICEID}}</td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>

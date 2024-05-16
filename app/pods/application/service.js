@@ -5,6 +5,8 @@ import { tracked } from '@glimmer/tracking';
 export default class ApplicationService extends Service {
   serviceVariable = 'Variable inicializada en Service';
 
+  @tracked token = null;
+
   // Array que contendrá la lista de usuarios
   userList = A();
 
