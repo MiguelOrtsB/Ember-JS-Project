@@ -9,12 +9,16 @@ export default class BookingsBookingCardRoute extends Route {
 
   beforeModel(transition) {
     // if (this.Application.logedUser == null) {
-    if (!sessionStorage.getItem('usuario')) {
+    if (!this.Application.token) {
       this.router.transitionTo('/');
     } else {
-      this.Form.loadHotelList(); /* Cargamos la lista de hoteles para poder acceder a ella y recorrerla en el template (si no la cargamos aquí, solo se visualizará cuando 
-            accedamos a la ruta de 'Accommodations' que es donde está definida) */
-      return super.beforeModel(transition);
+      if(this.Bookings.selectedBooking != null){
+        this.Form.loadHotelList(); /* Cargamos la lista de hoteles para poder acceder a ella y recorrerla en el template (si no la cargamos aquí, solo se visualizará cuando 
+        accedamos a la ruta de 'Accommodations' que es donde está definida) */
+        return super.beforeModel(transition);
+      }else{
+        this.router.transitionTo('bookings');
+      }
     }
   }
 

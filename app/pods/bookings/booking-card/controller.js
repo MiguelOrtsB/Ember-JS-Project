@@ -7,6 +7,7 @@ import swal from 'sweetalert';
 
 export default class BookingsBookingCardController extends Controller {
   @service Bookings;
+  @service Application;
   @service router;
   @service Form;
 
@@ -152,9 +153,9 @@ export default class BookingsBookingCardController extends Controller {
         // this.Bookings.bookingList.push(this.Bookings.newBooking);
 
         this.Bookings.selectedBooking.id = newId.toString(); // Convertimos el ID en string (porque así están guardados en la lista)
-        let usuario = sessionStorage.getItem('usuario');
-        usuario = usuario.trim().replace(/^"(.*)"$/, '$1');
-        this.Bookings.selectedBooking.user = usuario; // Asignamos el usuario de realización del booking del sessionStorage
+        //let usuario = sessionStorage.getItem('token');
+        //usuario = usuario.user.trim().replace(/^"(.*)"$/, '$1');
+        this.Bookings.selectedBooking.user = this.Application.token.user; 
         this.Bookings.bookingList.pushObject(this.Bookings.selectedBooking); // Y lo pusheamos a la lista que contiene todos los Bookings
 
         this.Bookings.saveBookingList(); // Y lo guardamos con esta función

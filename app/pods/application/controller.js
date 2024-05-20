@@ -47,33 +47,33 @@ export default class ApplicationController extends Controller {
   }
 
   // Función con la acción con la lógica para comprobar si el usuario y contraseña son correctos una vez hecho click en el botón de iniciar sesión (NO EN USO)
-  @action
-  onClickLogin() {
-    let logged = false;
-    for (let i = 0; i < this.Application.userList.length; i++) {
-      const user = this.Application.userList[i];
-      if (user.username == this.username && user.password == this.password) {
-        logged = true;
-        this.Application.logedUser = user;
-        sessionStorage.setItem(
-          'usuario',
-          JSON.stringify(this.Application.logedUser.username)
-        ); // Guardamos la sesión con el usuario actual
-      }
-    }
-    if (logged) {
-      this.router.transitionTo('home');
-    } else {
-      swal('Error', 'Nombre de usuario o contraseña incorrectos.', 'error');
-      this.Application.logedUser = null;
-      this.router.transitionTo('/');
-    }
-  }
+  // @action
+  // onClickLogin() {
+  //   let logged = false;
+  //   for (let i = 0; i < this.Application.userList.length; i++) {
+  //     const user = this.Application.userList[i];
+  //     if (user.username == this.username && user.password == this.password) {
+  //       logged = true;
+  //       this.Application.logedUser = user;
+  //       sessionStorage.setItem(
+  //         'usuario',
+  //         JSON.stringify(this.Application.logedUser.username)
+  //       ); // Guardamos la sesión con el usuario actual
+  //     }
+  //   }
+  //   if (logged) {
+  //     this.router.transitionTo('home');
+  //   } else {
+  //     swal('Error', 'Nombre de usuario o contraseña incorrectos.', 'error');
+  //     this.Application.logedUser = null;
+  //     this.router.transitionTo('/');
+  //   }
+  // }
 
   // Función para cerrar sesión y regresar a la página de Login
   @action
   onClickLogout() {
-    this.Application.logedUser = null;
+    this.Application.token = null;
     sessionStorage.removeItem('usuario'); // Eliminamos la sesión del usuario actual
     sessionStorage.removeItem('token');
     this.router.transitionTo('/');
@@ -156,8 +156,6 @@ export default class ApplicationController extends Controller {
 
   @action
   login() {
-    let logged = false;
-
     let { username, password } = this;
 
     let credentials = {
@@ -167,28 +165,15 @@ export default class ApplicationController extends Controller {
 
     this.loginEsb(credentials)
       .then((data) => {
-        logged = true;
-        this.Application.logedUser = data.user;
         this.Application.token = data;
-        sessionStorage.setItem("token", JSON.stringify(this.Application.token));
-        sessionStorage.setItem(
-          'usuario',
-          JSON.stringify(this.Application.logedUser)
-        ); // Guardamos la sesión con el usuario actual
-        if (logged) {
-          this.router.transitionTo('home');
-
-        } else {
-          swal('Error', 'Nombre de usuario o contraseña incorrectos.', 'error');
-          this.Application.logedUser = null;
-          this.router.transitionTo('/');
-        }
+        sessionStorage.setItem('token', JSON.stringify(this.Application.token));
+        this.router.transitionTo('home');
+        
       })
       .catch((error) => {
         console.log(error);
         swal('Error', 'Nombre de usuario o contraseña incorrectos.', 'error');
-          this.Application.logedUser = null;
-          this.router.transitionTo('/');
+        this.router.transitionTo('/');
       });
   }
 

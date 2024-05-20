@@ -10,13 +10,6 @@ export default class ApplicationRoute extends Route {
     console.log('initRoute');
   }
 
-  beforeModel() {
-    if (sessionStorage.getItem('usuario')) {
-      this.router.transitionTo('home');
-      this.Application.logedUser = true;
-    }
-  }
-
   async model() {
     // this.Application.loadUserList();
     // let response = await fetch('/api/users.json');

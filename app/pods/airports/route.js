@@ -4,19 +4,18 @@ import { inject as service } from '@ember/service';
 export default class AirportsRoute extends Route {
     @service router;
     @service Airports;
+    @service Application;
 
     init() {
         super.init(...arguments);
     }
-    
+
     beforeModel(transition) {
-    // if (this.Application.logedUser == null) {
-        if (!sessionStorage.getItem('usuario')) {
+        if (!this.Application.token) {
             this.router.transitionTo('/');
         } else {
-            this.Airports.getTokenFromSessionStorage();
             this.Airports.loadAirports();
-            return super.beforeModel(transition);
         }
+        return super.beforeModel(transition);
     }
 }

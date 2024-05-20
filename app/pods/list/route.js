@@ -12,7 +12,7 @@ export default class ListRoute extends Route {
   // Función que es la primera que se ejecuta cuando se carga la ruta 'home' y comprubea si el usuario se ha registrado para evitar que acceda a ella
   beforeModel(transition) {
     // if (this.Application.logedUser == null) {
-    if (!sessionStorage.getItem('usuario')) {
+    if (!this.Application.token) {
       this.router.transitionTo('/');
     } else {
       return super.beforeModel(transition);

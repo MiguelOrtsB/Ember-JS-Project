@@ -13,7 +13,7 @@ export default class BookingsRoute extends Route {
 
   beforeModel(transition) {
     // if (this.Application.logedUser == null) {
-    if (!sessionStorage.getItem('usuario')) {
+    if (!this.Application.token) {
       this.router.transitionTo('/');
     } else {
       this.Bookings.loadBookingListFromLocalStorage(); // Cargamos la lista de objetos (bookings) al cargar la página

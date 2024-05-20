@@ -8,10 +8,7 @@ export default class ApplicationService extends Service {
   @tracked token = null;
 
   // Array que contendrá la lista de usuarios
-  userList = A();
-
-  // Variable para comprobar si el usuario se ha logueado
-  @tracked logedUser = null;
+  @tracked userList = A();
 
   // Variable que asignará en la ruta Home en nuevo usuario de la sesión para que muestre el mensaje de 'Bienvenido' correctamente
   @tracked storageUserName = null;
@@ -21,6 +18,7 @@ export default class ApplicationService extends Service {
     super.init(...arguments);
     console.log('initService');
     this.loadUserList();
+    this.getTokenFromSessionStorage();
   }
 
   // Cargamos la lista de usuarios del JSON y la asignamos al array anterior
@@ -30,4 +28,10 @@ export default class ApplicationService extends Service {
     this.userList = data;
     console.log(this.userList);
   }
+
+  getTokenFromSessionStorage() {
+    let sessionData = sessionStorage.getItem('token'); // Guardamos en un variable el JSON almacenado localmente en el navegador recuperando el valor asociado a la clave 'bookings'
+    let token = JSON.parse(sessionData); // Lo parseamos a objetos Javascript
+    this.token = token; // Los aasignamos a la variable instanciada anteriormente
+}
 }
